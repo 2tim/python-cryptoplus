@@ -105,7 +105,7 @@ test_data = [
 
 def get_tests():
     from CryptoPlus.Cipher import Blowfish
-    from common import make_block_tests
+    from .common import make_block_tests
     return make_block_tests(Blowfish, "Blowfish", test_data)
 
 if __name__ == '__main__':

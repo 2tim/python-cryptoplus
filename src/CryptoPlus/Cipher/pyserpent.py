@@ -151,7 +151,7 @@ def LT(input):
     128-bit string 'input' and return a 128-bit string as the result."""
 
     if len(input) != 128:
-        raise ValueError, "input to LT is not 128 bit long"
+        raise ValueError("input to LT is not 128 bit long")
 
     result = ""
     for i in range(len(LTTable)):
@@ -167,7 +167,7 @@ def LTInverse(output):
     string (the input) as the result."""
 
     if len(output) != 128:
-        raise ValueError, "input to inverse LT is not 128 bit long"
+        raise ValueError("input to inverse LT is not 128 bit long")
 
     result = ""
     for i in range(len(LTTableInverse)):
@@ -247,8 +247,8 @@ def applyPermutation(permutationTable, input):
     128-bit bitstring as the result."""
 
     if len(input) != len(permutationTable):
-        raise ValueError, "input size (%d) doesn't match perm table size (%d)"\
-              % (len(input), len(permutationTable))
+        raise ValueError("input size (%d) doesn't match perm table size (%d)"\
+              % (len(input), len(permutationTable)))
 
     result = ""
     for i in range(len(permutationTable)):
@@ -275,7 +275,7 @@ def R(i, BHati, KHat):
     elif i == r-1:
         BHatiPlus1 = xor(SHati, KHat[r])
     else:
-        raise ValueError, "round %d is out of 0..%d range" % (i, r-1)
+        raise ValueError("round %d is out of 0..%d range" % (i, r-1))
     #O.show("BHatiPlus1", BHatiPlus1, "(i=%2d) BHatiPlus1" % i)
 
     return BHatiPlus1
@@ -294,7 +294,7 @@ def RInverse(i, BHatiPlus1, KHat):
     elif i == r-1:
         SHati = xor(BHatiPlus1, KHat[r])
     else:
-        raise ValueError, "round %d is out of 0..%d range" % (i, r-1)
+        raise ValueError("round %d is out of 0..%d range" % (i, r-1))
     #O.show("SHati", SHati, "(i=%2d) SHati" % i)
 
     xored = SHatInverse(i, SHati)
@@ -518,7 +518,7 @@ def makeLongKey(k):
 
     l = len(k)
     if l % 32 != 0 or l < 64 or l > 256:
-        raise ValueError, "Invalid key length (%d bits)" % l
+        raise ValueError("Invalid key length (%d bits)" % l)
 
     if l == 256:
         return k
@@ -552,9 +552,9 @@ def bitstring(n, minlen=1):
     """
 
     if minlen < 1:
-        raise ValueError, "a bitstring must have at least 1 char"
+        raise ValueError("a bitstring must have at least 1 char")
     if n < 0:
-        raise ValueError, "bitstring representation undefined for neg numbers"
+        raise ValueError("bitstring representation undefined for neg numbers")
 
     result = ""
     while n > 0:
@@ -576,8 +576,8 @@ def binaryXor(n1, n2):
     """
 
     if len(n1) != len(n2):
-        raise ValueError, "can't xor bitstrings of different " + \
-              "lengths (%d and %d)" % (len(n1), len(n2))
+        raise ValueError("can't xor bitstrings of different " + \
+              "lengths (%d and %d)" % (len(n1), len(n2)))
     # We assume that they are genuine bitstrings instead of just random
     # character strings.
 
@@ -598,7 +598,7 @@ def xor(*args):
     """
 
     if args == []:
-        raise ValueError, "at least one argument needed"
+        raise ValueError("at least one argument needed")
 
     result = args[0]
     for arg in args[1:]:
@@ -677,7 +677,7 @@ bin2hex = {
 
 # Make the reverse lookup table too
 hex2bin = {}
-for (bin, hex) in bin2hex.items():
+for (bin, hex) in list(bin2hex.items()):
     hex2bin[hex] = bin
 
 
@@ -716,7 +716,7 @@ def quadSplit(b128):
     bitstrings, least significant bitstring first."""
 
     if len(b128) != 128:
-        raise ValueError, "must be 128 bits long, not " + len(b128)
+        raise ValueError("must be 128 bits long, not " + len(b128))
 
     result = []
     for i in range(4):
@@ -729,7 +729,7 @@ def quadJoin(l4x32):
     bitstring obtained by concatenating the internal ones."""
 
     if len(l4x32) != 4:
-        raise ValueError, "need a list of 4 bitstrings, not " + len(l4x32)
+        raise ValueError("need a list of 4 bitstrings, not " + len(l4x32))
 
     return l4x32[0] + l4x32[1] + l4x32[2] + l4x32[3]
 
@@ -765,7 +765,7 @@ class Observer:
     def removeTag(self, *tags):
         """Remove the supplied tag(s) from those currently active."""
         for t in tags:
-            if t in self.tags.keys():
+            if t in list(self.tags.keys()):
                 del self.tags[t]
 
     def show(self, tag, variable, label=None, type="tb"):
@@ -779,9 +779,9 @@ class Observer:
 
         if label == None:
             label = tag
-        if "ALL" in self.tags.keys() or tag in self.tags.keys():
+        if "ALL" in list(self.tags.keys()) or tag in list(self.tags.keys()):
             if type == "tu":
-                output = `variable`
+                output = repr(variable)
             elif type == "tb":
                 output = bitstring2hexstring(variable)
             elif type == "tlb":
@@ -790,14 +790,14 @@ class Observer:
                     output = output + " %s" % bitstring2hexstring(item)
                 output = "[" + output[1:] + "]"
             else:
-                raise ValueError, "unknown type: %s. Valid ones are %s" % (
-                    type, self.typesOfVariable.keys())
+                raise ValueError("unknown type: %s. Valid ones are %s" % (
+                    type, list(self.typesOfVariable.keys())))
 
-            print label,
+            print(label, end=' ')
             if output:
-                print "=", output
+                print("=", output)
             else:
-                print
+                print()
 
 
 # We make one global observer object that is always available
@@ -805,7 +805,7 @@ O = Observer(["plainText", "userKey", "cipherText"])
 
 # --------------------------------------------------------------
 # Constants
-phi = 0x9e3779b9L
+phi = 0x9e3779b9
 r = 32
 # --------------------------------------------------------------
 # Data tables
@@ -1241,9 +1241,9 @@ help = """
 
 
 def helpExit(message = None):
-    print help
+    print(help)
     if message:
-        print "ERROR:", message
+        print("ERROR:", message)
     sys.exit()
 
 def convertToBitstring(input, numBits):
@@ -1258,7 +1258,7 @@ def convertToBitstring(input, numBits):
     if re.match("^[0-9a-f]+$", input):
         bitstring = hexstring2bitstring(input)
     else:
-        raise ValueError, "%s is not a valid hexstring" % input
+        raise ValueError("%s is not a valid hexstring" % input)
 
     # assert: bitstring now contains the bitstring version of the input
 
@@ -1267,7 +1267,7 @@ def convertToBitstring(input, numBits):
         if re.match("^0+$", bitstring[numBits:]):
             bitstring = bitstring[:numBits]
         else:
-            raise ValueError, "input too large to fit in %d bits" % numBits
+            raise ValueError("input too large to fit in %d bits" % numBits)
     else:
         bitstring = bitstring + "0" * (numBits-len(bitstring))
 
@@ -1289,14 +1289,14 @@ def main():
         if key == "-t":
             O.addTag(value)
         else:
-            if key in options.keys():
+            if key in list(options.keys()):
                 helpExit("Multiple occurrences of " + key)
             else:
                 options[string.strip(key)] = string.strip(value)
 
     # Not more than one mode
     mode = None
-    for k in options.keys():
+    for k in list(options.keys()):
         if k in ["-e", "-d", "-h"]:
             if mode:
                 helpExit("you can only specify one mode")
@@ -1307,13 +1307,13 @@ def main():
 
     # Put plainText, userKey, cipherText in bitstring format.
     plainText = userKey = cipherText = None
-    if options.has_key("-k"):
+    if "-k" in options:
         bitsInKey = keyLengthInBitsOf(options["-k"])
         rawKey = convertToBitstring(options["-k"], bitsInKey)
         userKey = makeLongKey(rawKey)
-    if options.has_key("-p"):
+    if "-p" in options:
         plainText = convertToBitstring(options["-p"], 128)
-    if options.has_key("-c"):
+    if "-c" in options:
         cipherText = convertToBitstring(options["-c"], 128)
     if mode == "-e" or mode == "-d":
         if not userKey:
@@ -1331,12 +1331,12 @@ def main():
     # only need to perform the action, without adding any extra print
     # statements here.
     if mode == "-e":
-        if options.has_key("-b"):
+        if "-b" in options:
             cipherText = encryptBitslice(plainText, userKey)
         else:
             cipherText = encrypt(plainText, userKey)
     elif mode == "-d":
-        if options.has_key("-b"):
+        if "-b" in options:
             plainText = decryptBitslice(cipherText, userKey)
         else:
             plainText = decrypt(cipherText, userKey)

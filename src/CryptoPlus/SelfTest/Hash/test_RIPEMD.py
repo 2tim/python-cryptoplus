@@ -62,7 +62,7 @@ test_data = [
 
 def get_tests():
     from CryptoPlus.Hash import RIPEMD
-    from common import make_hash_tests
+    from .common import make_hash_tests
     return make_hash_tests(RIPEMD, "RIPEMD", test_data)
 
 if __name__ == '__main__':

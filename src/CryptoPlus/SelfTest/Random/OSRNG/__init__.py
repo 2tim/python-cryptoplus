@@ -35,13 +35,13 @@ import os
 def get_tests():
     tests = []
     if os.name == 'nt':
-        import test_nt;        tests += test_nt.get_tests()
-        import test_winrandom; tests += test_winrandom.get_tests()
+        from . import test_nt;        tests += test_nt.get_tests()
+        from . import test_winrandom; tests += test_winrandom.get_tests()
     elif os.name == 'posix':
-        import test_posix;     tests += test_posix.get_tests()
+        from . import test_posix;     tests += test_posix.get_tests()
     if hasattr(os, 'urandom'):
-        import test_fallback;      tests += test_fallback.get_tests()
-    import test_generic;       tests += test_generic.get_tests()
+        from . import test_fallback;      tests += test_fallback.get_tests()
+    from . import test_generic;       tests += test_generic.get_tests()
     return tests
 
 if __name__ == '__main__':

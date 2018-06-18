@@ -1,4 +1,4 @@
-import pysha
+from . import pysha
 
 __all__ = ['new','digest_size']
 

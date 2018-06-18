@@ -32,10 +32,10 @@ __revision__ = "$Id$"
 
 def get_tests():
     tests = []
-    import Fortuna;             tests += Fortuna.get_tests()
-    import OSRNG;               tests += OSRNG.get_tests()
-    import test_random;         tests += test_random.get_tests()
-    import test_rpoolcompat;    tests += test_rpoolcompat.get_tests()
+    from . import Fortuna;             tests += Fortuna.get_tests()
+    from . import OSRNG;               tests += OSRNG.get_tests()
+    from . import test_random;         tests += test_random.get_tests()
+    from . import test_rpoolcompat;    tests += test_rpoolcompat.get_tests()
     return tests
 
 if __name__ == '__main__':

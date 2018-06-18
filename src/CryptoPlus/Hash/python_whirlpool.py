@@ -1,4 +1,4 @@
-import pywhirlpool
+from . import pywhirlpool
 
 __all__ = ['new','digest_size']
 

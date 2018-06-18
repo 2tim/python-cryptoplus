@@ -39,7 +39,7 @@ __revision__ = "$Id$"
 
 import sys
 import unittest
-import StringIO
+import io
 
 class SelfTestError(Exception):
     def __init__(self, message, result):
@@ -65,7 +65,7 @@ def run(module=None, verbosity=0, stream=None, **kwargs):
     else:
         suite.addTests(module.get_tests())
     if stream is None:
-        kwargs['stream'] = StringIO.StringIO()
+        kwargs['stream'] = io.StringIO()
     runner = unittest.TextTestRunner(verbosity=verbosity, **kwargs)
     result = runner.run(suite)
     if not result.wasSuccessful():
@@ -76,9 +76,9 @@ def run(module=None, verbosity=0, stream=None, **kwargs):
 
 def get_tests():
     tests = []
-    import Cipher; tests += Cipher.get_tests()
-    import Hash;   tests += Hash.get_tests()
-    import PublicKey; tests += PublicKey.get_tests()
+    from . import Cipher; tests += Cipher.get_tests()
+    from . import Hash;   tests += Hash.get_tests()
+    from . import PublicKey; tests += PublicKey.get_tests()
 #    import Random; tests += Random.get_tests()
 #    import Util;   tests += Util.get_tests()
     return tests

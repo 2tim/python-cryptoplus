@@ -4,7 +4,7 @@ makes the Util modules from Crypto AND CryptoPlus available here
 """
 #import Crypto
 #from Crypto.Util import number, randpool, RFC1751
-import padding, util, python_compat, number, randpool, RFC1751
+from . import padding, util, python_compat, number, randpool, RFC1751
 
 from pkg_resources import parse_version
 

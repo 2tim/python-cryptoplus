@@ -1,4 +1,4 @@
-from pysha256 import sha256
+from .pysha256 import sha256
 
 __all__ = ['new','digest_size']
 

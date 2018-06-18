@@ -1,8 +1,8 @@
-from blockcipher import *
+from .blockcipher import *
 try:
     import Crypto.Cipher.IDEA
 except ImportError:
-    print "Crypto.Cipher.IDEA isn't available. You're probably using the Debian pycrypto version. Install the original pycrypto for IDEA."
+    print("Crypto.Cipher.IDEA isn't available. You're probably using the Debian pycrypto version. Install the original pycrypto for IDEA.")
     raise
 
 def new(key,mode=MODE_ECB,IV=None,counter=None,segment_size=None):

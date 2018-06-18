@@ -1,5 +1,5 @@
-from blockcipher import *
-import pyDes
+from .blockcipher import *
+from . import pyDes
 
 def new(key,mode=MODE_ECB,IV=None,counter=None,segment_size=None):
     """Create a DES-EDE3 or DES-EDE2 cipher object

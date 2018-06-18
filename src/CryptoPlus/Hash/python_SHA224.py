@@ -1,4 +1,4 @@
-from pysha224 import sha224
+from .pysha224 import sha224
 
 __all__ = ['new','digest_size']
 

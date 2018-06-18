@@ -72,7 +72,7 @@ test_data = [
 
 def get_tests():
     from CryptoPlus.Cipher import ARC4
-    from common import make_stream_tests
+    from .common import make_stream_tests
     return make_stream_tests(ARC4, "ARC4", test_data)
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
-from blockcipher import *
-from pyblowfish import Blowfish
+from .blockcipher import *
+from .pyblowfish import Blowfish
 
 def new(key,mode=MODE_ECB,IV=None,counter=None,segment_size=None):
     """Create a new cipher object

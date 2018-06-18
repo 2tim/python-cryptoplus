@@ -54,7 +54,7 @@ test_data = [
 
 def get_tests():
     from CryptoPlus.Hash import SHA256
-    from common import make_hash_tests
+    from .common import make_hash_tests
     return make_hash_tests(SHA256, "SHA256", test_data)
 
 if __name__ == '__main__':

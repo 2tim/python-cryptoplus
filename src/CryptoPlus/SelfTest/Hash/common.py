@@ -89,7 +89,7 @@ class MACSelfTest(unittest.TestCase):
         return self.description
 
     def runTest(self):
-        for hashname in self.expected_dict.keys():
+        for hashname in list(self.expected_dict.keys()):
             hashmod = self.hashmods[hashname]
             key = binascii.a2b_hex(self.key)
             data = binascii.a2b_hex(self.input)

@@ -35,8 +35,8 @@ import os
 def get_tests():
     tests = []
     if os.name == 'nt':
-        import test_winrandom; tests += test_winrandom.get_tests()
-    import test_number; tests += test_number.get_tests()
+        from . import test_winrandom; tests += test_winrandom.get_tests()
+    from . import test_number; tests += test_number.get_tests()
     return tests
 
 if __name__ == '__main__':

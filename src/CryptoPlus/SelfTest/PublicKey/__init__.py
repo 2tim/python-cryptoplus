@@ -34,7 +34,7 @@ import os
 
 def get_tests():
     tests = []
-    import test_RSA;       tests += test_RSA.get_tests()
+    from . import test_RSA;       tests += test_RSA.get_tests()
     return tests
 
 if __name__ == '__main__':

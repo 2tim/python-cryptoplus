@@ -53,7 +53,7 @@ test_data = [
 
 def get_tests():
     from CryptoPlus.Hash import MD5
-    from common import make_hash_tests
+    from .common import make_hash_tests
     return make_hash_tests(MD5, "MD5", test_data)
 
 if __name__ == '__main__':

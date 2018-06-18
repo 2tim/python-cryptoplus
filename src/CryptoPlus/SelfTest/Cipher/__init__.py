@@ -32,17 +32,17 @@ __revision__ = "$Id$"
 
 def get_tests():
     tests = []
-    import test_python_AES;      tests += test_python_AES.get_tests()
-    import test_AES;      tests += test_AES.get_tests()
-    import test_ARC2;     tests += test_ARC2.get_tests()
-    import test_ARC4;     tests += test_ARC4.get_tests()
-    import test_Blowfish; tests += test_Blowfish.get_tests()
-    import test_CAST;     tests += test_CAST.get_tests()
-    import test_DES3;     tests += test_DES3.get_tests()
-    import test_DES;      tests += test_DES.get_tests()
-    import test_IDEA;     tests += test_IDEA.get_tests()
-    import test_RC5;      tests += test_RC5.get_tests()
-    import test_XOR;      tests += test_XOR.get_tests()
+    from . import test_python_AES;      tests += test_python_AES.get_tests()
+    from . import test_AES;      tests += test_AES.get_tests()
+    from . import test_ARC2;     tests += test_ARC2.get_tests()
+    from . import test_ARC4;     tests += test_ARC4.get_tests()
+    from . import test_Blowfish; tests += test_Blowfish.get_tests()
+    from . import test_CAST;     tests += test_CAST.get_tests()
+    from . import test_DES3;     tests += test_DES3.get_tests()
+    from . import test_DES;      tests += test_DES.get_tests()
+    from . import test_IDEA;     tests += test_IDEA.get_tests()
+    from . import test_RC5;      tests += test_RC5.get_tests()
+    from . import test_XOR;      tests += test_XOR.get_tests()
     return tests
 
 if __name__ == '__main__':

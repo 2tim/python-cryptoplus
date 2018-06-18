@@ -76,7 +76,7 @@ test_data = [
 
 def get_tests():
     from CryptoPlus.Cipher import IDEA
-    from common import make_block_tests
+    from .common import make_block_tests
     return make_block_tests(IDEA, "IDEA", test_data)
 
 if __name__ == '__main__':

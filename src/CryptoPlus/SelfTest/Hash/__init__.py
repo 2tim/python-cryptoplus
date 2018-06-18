@@ -32,13 +32,13 @@ __revision__ = "$Id$"
 
 def get_tests():
     tests = []
-    import test_HMAC;   tests += test_HMAC.get_tests()
-    import test_MD2;    tests += test_MD2.get_tests()
-    import test_MD4;    tests += test_MD4.get_tests()
-    import test_MD5;    tests += test_MD5.get_tests()
-    import test_RIPEMD; tests += test_RIPEMD.get_tests()
-    import test_SHA;    tests += test_SHA.get_tests()
-    import test_SHA256; tests += test_SHA256.get_tests()
+    from . import test_HMAC;   tests += test_HMAC.get_tests()
+    from . import test_MD2;    tests += test_MD2.get_tests()
+    from . import test_MD4;    tests += test_MD4.get_tests()
+    from . import test_MD5;    tests += test_MD5.get_tests()
+    from . import test_RIPEMD; tests += test_RIPEMD.get_tests()
+    from . import test_SHA;    tests += test_SHA.get_tests()
+    from . import test_SHA256; tests += test_SHA256.get_tests()
     return tests
 
 if __name__ == '__main__':

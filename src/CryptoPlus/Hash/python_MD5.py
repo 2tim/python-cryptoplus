@@ -1,4 +1,4 @@
-import pymd5
+from . import pymd5
 
 __all__ = ['new','digest_size']
 

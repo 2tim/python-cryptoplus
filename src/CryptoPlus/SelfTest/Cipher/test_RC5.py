@@ -30,7 +30,7 @@
 
 __revision__ = "$Id$"
 
-from common import dict     # For compatibility with Python 2.1 and 2.2
+from .common import dict     # For compatibility with Python 2.1 and 2.2
 
 # This is a list of (plaintext, ciphertext, key, description or None, extra_params) tuples.
 test_data = [
@@ -83,7 +83,7 @@ test_data = [
 
 def get_tests():
     from CryptoPlus.Cipher import RC5
-    from common import make_block_tests
+    from .common import make_block_tests
     return make_block_tests(RC5, "RC5", test_data)
 
 if __name__ == '__main__':

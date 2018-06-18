@@ -1,4 +1,4 @@
-from pysha512 import sha512
+from .pysha512 import sha512
 
 __all__ = ['new','digest_size']
 

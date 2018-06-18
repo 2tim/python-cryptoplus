@@ -1,5 +1,5 @@
-from blockcipher import *
-from pypresent import Present
+from .blockcipher import *
+from .pypresent import Present
 
 def new(key,mode=MODE_ECB,IV=None,counter=None,segment_size=None,rounds=32):
     """Create a new cipher object

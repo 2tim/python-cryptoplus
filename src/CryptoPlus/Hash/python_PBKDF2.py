@@ -1,4 +1,4 @@
-import pypbkdf2
+from . import pypbkdf2
 from CryptoPlus.Hash import SHA as SHA1, HMAC
 
 __all__ = ['new']

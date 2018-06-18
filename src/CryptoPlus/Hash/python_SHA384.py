@@ -1,4 +1,4 @@
-from pysha384 import sha384
+from .pysha384 import sha384
 
 __all__ = ['new','digest_size']
 
